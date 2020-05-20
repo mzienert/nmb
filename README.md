@@ -19,3 +19,11 @@ You will need the AWS SDK as well as the AWS Amplify library installed on your l
 amplify publish
 ```
 Just a heads up, updates to the Amplify library usually break things in a painful way.  Update the Amplify library if you feel like punishing yourself.
+
+## Backend Development
+The Backend is a Restful Node/Express app that will expose the API on port 3000 for local development
+```
+node app.local.js
+```
+A .env file needs to be placed in the server root that contains an ACCESS_KEY_ID and SECRET_ACCESS_KEY, for local development.  
+
