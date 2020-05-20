@@ -22,14 +22,14 @@ AWS.config.update({
   secretAccessKey: 'oKV0snR79ZZwfUc+0B3nOB5hNbu2WRCIgr6cMyNL',
 });
 
-/*
-var dynamodb = new AWS.DynamoDB();
+
+/*var dynamodb = new AWS.DynamoDB();
 
 var params = {
   TableName : "Events",
   KeySchema: [
-    { AttributeName: "date", KeyType: "HASH"},  //Partition key
-    { AttributeName: "title", KeyType: "RANGE" }  //Sort key
+    { AttributeName: "title", KeyType: "HASH"},  //Partition key
+    { AttributeName: "date", KeyType: "RANGE" }  //Sort key
   ],
   AttributeDefinitions: [
     { AttributeName: "date", AttributeType: "N" },
@@ -47,15 +47,14 @@ dynamodb.createTable(params, function(err, data) {
   } else {
     console.log("Created table. Table description JSON:", JSON.stringify(data, null, 2));
   }
-});
-*/
+});*/
 
 var docClient = new AWS.DynamoDB.DocumentClient();
 
 var table = "Events";
-const date = Date.now();
 
-var title = "The Big New Movie";
+var date = Date.now();
+var title = "The Big New Movie 5";
 
 var params = {
   TableName:table,
@@ -77,3 +76,5 @@ docClient.put(params, function(err, data) {
     console.log("Added item:", JSON.stringify(data, null, 2));
   }
 });
+
+

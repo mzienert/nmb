@@ -1,9 +1,30 @@
 const express = require('express');
 const router = express.Router();
+const docClient = require('../db');
 
-router.get('/', function (req, res) {
-  res.send('Birds home page')
-})
+router
+  .get('/list-all', (req, res) => {
+    const params = {
+      TableName: "Events",
+      ProjectionExpression: "title",
+      FilterExpression: "#dt < :cur_dt",
+      ExpressionAttributeNames: {
+        "#dt": "date",
+      },
+      ExpressionAttributeValues: {
+        ":cur_dt": Date.now(),
+      }
+    };
+
+    const onScan = (err, data) => {
+      if (err) console.log(JSON.stringify(err, null, 2))
+      res.send(data)
+    }
+    docClient.scan(params, onScan);
+  })
+  .get(':id', (req, res) => {
+
+  })
 
 module.exports = router;
 

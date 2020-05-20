@@ -1,11 +1,11 @@
 'use strict'
 const express = require('express');
-const router = express.Router()
 const app = express();
 const cors = require('cors');
 const bodyParser = require('body-parser');
 
 app.use(bodyParser.json({limit: '50mb'}));
+
 app.options('*', cors());
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -13,17 +13,9 @@ app.use(function(req, res, next) {
   next();
 });
 
-const AWS = require('aws-sdk');
-AWS.config.update({
-  region: 'us-west-2',
-  accessKeyId: 'AKIAIVL4OZ44KEJYSP4A',
-  secretAccessKey: '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'
-});
-var s3Bucket = new AWS.S3( { params: {Bucket: 'nmb-20181206083858--hostingbucket'} } );
 
-var birds = require('./routes/events')
-
-app.use('/birds', birds)
+const events = require('./routes/events')
+app.use('/events', events)
 
 /*app.get('/get-menu', (req, res) => {
   connection.query(`SELECT * FROM nmb.menu ORDER BY pos ASC`, function (err, result) {
