@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const docClient = require('../db');
+const docClient = require('../config/db');
 
 router
   .get('/list-all', (req, res) => {
@@ -22,8 +22,8 @@ router
     }
     docClient.scan(params, onScan);
   })
-  .get(':id', (req, res) => {
-
+  .get('/:id', (req, res) => {
+    console.log(process.env)
   })
 
 module.exports = router;
