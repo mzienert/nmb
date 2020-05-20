@@ -1,0 +1,23 @@
+{
+  "name": "node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Matthew Zienert",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.422.0",
+    "aws-serverless-express": "^3.3.5",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "formidable": "^1.2.1",
+    "mysql": "^2.16.0",
+    "nodemon": "^1.19.1"
+  },
+  "devDependencies": {
+    "claudia": "^5.4.0"
+  }
+}

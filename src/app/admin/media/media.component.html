@@ -1,0 +1,33 @@
+<div fxFlex.gt-md="50" fxFlexOffset.gt-md="25" fxFlex.lt-md="90">
+  <mat-card>
+    <div fxLayout="row wrap">
+      <div fxFlex="50">
+        <h1 class="mat-headline">Images</h1>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+    <div fxLayout="row wrap" class="imgBtns">
+      <input style="display: none" type="file" (change)="onFileChanged($event)" #fileInput>
+      <div fxFlex.gt-md="15%" fxFlex.lt-md="30%">
+        <button mat-raised-button color="accent" [disabled]="selectedFile" (click)="fileInput.click()">Select File</button>
+      </div>
+      <div fxFlex.gt-md="15%" fxFlex.lt-md="30%">
+        <button mat-raised-button color="primary" [disabled]="!selectedFile" (click)="onUpload()">Upload</button>
+      </div>
+      <div fxFlex.gt-md="15%" fxFlex.lt-md="30%">
+        <button mat-raised-button [disabled]="!selectedFile">Clear</button>
+      </div>
+      <div fxFlex="20">
+        <mat-spinner [diameter]="30" *ngIf="this.loading"></mat-spinner>
+      </div>
+    </div>
+    <div fxLayout.gt-md="row wrap" fxHide.lt-md fxLayoutGap="20px" fxLayoutAlign="center center" class="ig" id="gallery" #galleryRef>
+      <div fxFlex="calc(30% - 20px)" *ngFor="let image of images" class="imgMax">
+        <mat-card class="igImg" id="{{image.name}}">
+          <img mat-card-image src="https://nmb-compress.s3-us-west-2.amazonaws.com/public/{{image.name}}" (click)="viewImg(image.name)">
+          <button mat-raised-button color="accent" (click)="delete(image.name)">Delete</button>
+        </mat-card>
+      </div>
+    </div>
+  </mat-card>
+</div>

@@ -1,0 +1,25 @@
+.bg-img {
+    width:100%;
+}
+.bg-container {
+    max-height: 770px;
+    overflow: hidden;
+    position: relative;
+    z-index: 100;
+    box-shadow: 0 2px 1px -1px rgba(0,0,0,.2),
+              0 1px 1px 0 rgba(0,0,0,.14),
+              0 1px 3px 0 rgba(0,0,0,.12)
+}
+.logo-container {
+    width: 100%;
+    position: absolute;
+    z-index: 200;
+    top: 116px;
+}
+.logo-box {
+    width: 25%;
+    margin: 0 auto;
+}
+.logo-box img {
+    max-width: 100%;
+}

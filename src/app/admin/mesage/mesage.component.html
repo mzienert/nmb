@@ -1,0 +1,25 @@
+<div fxFlex.gt-md="50" fxFlexOffset.gt-md="25" fxFlex.lt-md="90">
+  <mat-card>
+    <div fxLayout="row wrap">
+      <div fxFlex="50">
+        <h1 class="mat-headline">Set Message</h1>
+      </div>
+    </div>
+    <form [formGroup]="messageForm" (ngSubmit)="saveMsg()" class="msgForm">
+      <div fxLayout="row wrap">
+        <div fxFlex="100">
+          <mat-form-field class="full-width">
+            <mat-label>Message Text</mat-label>
+            <input matInput formControlName="text">
+          </mat-form-field>
+        </div>
+        <div fxFlex.gt-md="15%" fxFlex.lt-md="30%">
+          <button mat-raised-button color="primary" type="submit"><i class="material-icons">done</i> Save</button>
+        </div>
+        <div fxFlex="20">
+            <mat-spinner [diameter]="30" *ngIf="this.loading"></mat-spinner>
+          </div>
+      </div>
+    </form>
+  </mat-card>
+</div>

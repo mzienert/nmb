@@ -1,0 +1,21 @@
+.mat-body {
+    font-size: 16px;
+}
+.mat-card {
+    margin: 0 0 20px 0;
+}
+.mat-card img {
+    position: absolute;
+    top: -100%;
+    bottom: -100%;
+    left: 0;
+    right: 0;
+    margin: auto;
+    image-orientation: from-image;
+}
+.htmlDiv {
+    font-size: 18px;
+    font-family: Roboto,"Helvetica Neue",sans-serif;
+    text-align: left;
+    margin: 0 20px;
+  }

@@ -1,0 +1,19 @@
+<h1 class="mat-display-1 orange">Menu</h1>
+<app-loading *ngIf="loadingDrinks; else menuContainer"></app-loading>
+<ng-template #menuContainer>
+
+  <div fxLayout.gt-md="row wrap" fxLayout.lt-md="column" fxLayoutGap="20px grid" fxLayoutAlign="center center">
+    <div fxFlex.gt-md="40" fxFlex.lt-md="80" class="menu-item" *ngFor="let drink of drinkList">
+      <mat-card>
+        <mat-card-content>
+          <h1 class="mat-headline"><strong>{{drink.name}}</strong></h1>
+          <mat-divider></mat-divider>
+          <div [innerHTML]="drink.description" class="htmlDiv"></div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+  
+</ng-template>
+
+

@@ -1,0 +1,37 @@
+<div class="container" fxLayout.gt-md="row" fxLayout.lt-md="column" fxLayoutAlign="center top" fxLayoutGap="20px"> 
+  <div fxFlex="40" class="box">
+    <h1>Location</h1>
+    <mat-card class="map">
+        <iframe mat-card-image src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12641.196408847942!2d-107.8129666!3d37.6186516!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x347aba48c4c43ddc!2sThe%20Nugget%20Mountain%20Bar!5e0!3m2!1sen!2sus!4v1570301527313!5m2!1sen!2sus" width="618" height="362" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+      <mat-card-content>
+        <p class="m1 no-btm"><strong>Our Hours</strong></p>
+        <div fxLayout="row wrap">
+          <div fxFlex="50">
+            <p class="m1"><strong>Monday:</strong> {{this.mon}}</p>
+            <p class="m1"><strong>Tueday:</strong> {{this.tue}}</p>
+            <p class="m1"><strong>Wednesday:</strong> {{this.wed}}</p>
+          </div>
+          <div fxFlex="50">
+            <p class="m1"><strong>Thursday:</strong> {{this.thu}}</p>
+            <p class="m1"><strong>Friday:</strong> {{this.fri}}</p>
+            <p class="m1"><strong>Saturday:</strong> {{this.sat}}</p>
+          </div>
+          <div fxFlex="100">
+            <p class="m1 no-btm"><strong>Sunday:</strong> {{this.sun}}</p>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div fxFlex="40" class="box">
+    <h1>Shuttle</h1>
+    <mat-card>
+      <img mat-card-image src="../assets/images/shuttle.jpg" alt="Photo of a Shiba Inu">
+      <mat-card-content>
+          <p class="m1"><strong>The Nugget Mountain Bar</strong> provides a complimentary shuttle to and from Purgatory Resort and within a 5 mile radius. Friday - Sunday and Holidays.</p>
+          <p class="m2">To schedule, Call:</p>
+          <p class="m2"><strong>(970)-749-4412</strong></p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

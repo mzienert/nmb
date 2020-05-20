@@ -1,0 +1,177 @@
+.btmIndex {
+  z-index: 111;
+}
+.bg {
+  background-image: url('../../assets/images/w1.jpg');
+  box-shadow: 0 2px 1px -1px rgba(0,0,0,.2),
+  0 1px 1px 0 rgba(0,0,0,.14),
+  0 1px 3px 0 rgba(0,0,0,.12)
+}
+.primarySide {
+  text-align: center;
+  padding: 230px 0 0 0;
+  height: 770px;
+}
+.primarySide p {
+  font-size: 18px;
+  padding: -60px 0 0 0;
+}
+.blue {
+  color: rgb(24,142,201);
+}
+.orange {
+  color: rgb(24,142,201);
+  text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+}
+.white {
+  color: #fff;
+  text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+}
+.aboutContainer {
+  padding: 20px 20px 0;
+}
+p {
+  font-size: 16px;
+  color: rgb(0,0,0,0.86);
+}
+.mat-card {
+  padding-bottom: 0;
+}
+.eventsContainer {
+  padding: 0 0 0 0;
+  text-align: center;
+  margin: 0 0 0 0;
+}
+.gridImg {
+  padding: 20px;
+  margin: 20px;
+}
+footer {
+  background-color: rgb(0,0,0,0.86);
+  height: 160px;
+}
+.about {
+  margin: 0 0 0 0;
+  padding: 20px 0 0;
+ 
+}
+.events {
+  box-shadow: 0 2px 1px -1px rgba(0,0,0,.2),
+  0 1px 1px 0 rgba(0,0,0,.14),
+  0 1px 3px 0 rgba(0,0,0,.12)
+}
+.no-top {
+  margin: 0 0 0 0;
+}
+.location {
+  background-color: rgb(148,98,59);;
+  margin: 0 0 20px 0;
+  padding: 0 0 40px 0;
+}
+.brown {
+  color: rgb(148,98,59);
+
+}
+.priSide {
+  margin: 450px 0 0 0;
+}
+.mat-card {
+  background-color: #fff;
+}
+.mat-card-content p {
+  padding: 0 0 15px 0;
+  text-align: center;
+}
+.large {
+  font-size: 42px;
+}
+.open {
+  text-align: center;
+  padding: 60px 0 0 0;
+}
+.red {
+  color: rgb(40,58,122);
+  text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+  font-family: 'Ultra', serif;
+  -webkit-text-stroke: 1px rgb(237,201,40);;
+}
+.white {
+  color: #fff;
+}
+a {
+  color: #fff;
+  text-decoration: none;
+}
+.padMore {
+  margin: 0 20px
+}
+.igContainer {
+  max-height: 213px;
+  overflow: hidden;
+  margin: 0 0 20px 0;
+  max-width: 20%;
+}
+.ig {
+  margin: 0 20px;
+}
+.fix {
+  margin: -130px 0 0 0;
+}
+.ska {
+  max-width: 100%;
+}
+.mat-icon {
+  color: #fff;
+  font-size: 18px
+}
+a.grey {
+  color: rgb(0,0,0,0.85);
+  text-decoration: underline;
+}
+.eventLoading {
+  padding: 20px 0;
+}
+.eventSpinner {
+  margin: 0 auto;
+}
+a.foodLink {
+  text-decoration: underline;
+  color: rgba(0,0,0,0.86);
+}
+a.foodLink:hover {
+  text-decoration: underline;
+}
+.galImage {
+  max-width: 250px;
+}
+.imgMax {
+  max-width: 371px;
+}
+.eventPad {
+  margin: 0;
+}
+.eventTitle {
+  padding: 15px 0;
+}
+.foodP{
+  font-size: 18px;
+  margin: 10px 0 0;
+}
+.dateTxt {
+  margin: 0 0 15px;
+}
+
+.media {
+  padding: 0 0 20px;
+
+}
+
+/* ////////////////////////////// */
+
+.componentContainer {
+  background-color: #fff;
+  border-radius: 4px;
+}
+.centerTxt {
+  text-align: center;
+}

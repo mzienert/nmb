@@ -1,0 +1,19 @@
+{
+    "nmbenv": {
+        "awscloudformation": {
+            "AuthRoleName": "nmb-nmbenv-20190824194254-authRole",
+            "UnauthRoleArn": "arn:aws:iam::282232948281:role/nmb-nmbenv-20190824194254-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::282232948281:role/nmb-nmbenv-20190824194254-authRole",
+            "Region": "us-west-2",
+            "DeploymentBucketName": "nmb-nmbenv-20190824194254-deployment",
+            "UnauthRoleName": "nmb-nmbenv-20190824194254-unauthRole",
+            "StackName": "nmb-nmbenv-20190824194254",
+            "StackId": "arn:aws:cloudformation:us-west-2:282232948281:stack/nmb-nmbenv-20190824194254/a8d22ce0-c6d9-11e9-9db3-0a6cf1beac66"
+        },
+        "categories": {
+            "auth": {
+                "nmbe10a734b": {}
+            }
+        }
+    }
+}

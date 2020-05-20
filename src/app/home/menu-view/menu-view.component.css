@@ -1,0 +1,47 @@
+  .orange {
+    color: rgb(24,142,201);
+    text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+  }
+  .eventSpinner {
+    margin: 0 auto;
+  }
+  .foodP{
+    font-size: 18px;
+    margin: 10px 0 0;
+    text-align: center;
+  }
+  a.foodLink {
+    text-decoration: underline;
+    color: rgba(0,0,0,0.86);
+  }
+  a.foodLink:hover {
+    text-decoration: underline;
+  }
+  h1 {
+    text-align: center;
+    margin: 0;
+    padding: 20px 0;
+  }
+  .mat-body {
+    text-align: center;
+  }
+  .mat-title {
+    text-align: center;
+  }
+  .mat-card {
+    margin: 0;
+    min-height: 215px;
+  }
+  .htmlDiv {
+    font-size: 18px;
+    font-family: Roboto,"Helvetica Neue",sans-serif;
+    text-align: center;
+    margin: 0 20px;
+  }
+  .menu-item {
+    max-width: 369.25px;
+  }
+  .container {
+    margin: 20px;
+
+}

@@ -1,0 +1,182 @@
+<div class="nav-container">
+  <!--<header *ngIf="message && router.url !== '/login'" #msgBox>
+    <div fxFlex="100" class="notice">
+      <p class="mat-body">{{messageTxt}}</p>
+    </div>
+  </header>-->
+  <nav>
+    <div fxLayout fxLayoutGap.gt-md="15%">
+      <div fxFlex.gt-md="35" fxFlex.lt-md="45">
+        <img src="./assets/images/nugget_txt.png" class="logo-img">
+      </div>
+      <div fxFlex.gt-md="65" fxFlex.lt-md="55" *ngIf="router.url !== '/login' && router.url !== '/management'">
+        <div fxLayout="row" fxHide.lt-md *ngIf="!(auth.loggedIn | async)">
+          <div fxFlex="10" class="nav-btn" *ngFor="let button of navButtons">
+            <button mat-button color="primary" (click)="scroll(button.title)">{{button.title}}</button>
+          </div>
+          <div fxFlex="5" class="nav-btn">
+            <button mat-button (click)="fb()">
+              <img src="../assets/images/f_logo_RGB-White_58.png" width="20px">
+            </button>
+          </div>
+          <div fxFlex="5" class="nav-btn">
+            <button mat-button (click)="ig()">
+              <img src="../assets/images/glyph-logo_May2016.png" class="ig" width="20px">
+            </button>
+          </div>
+        </div>
+        <div fxLayout="row" fxHide.gt-md class="nav-btn">
+          <button mat-icon-button class="mob-btn" [matMenuTriggerFor]="menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item *ngFor="let button of navButtons" (click)="scroll(button.title)">
+              <span>{{button.title}}</span>
+            </button>
+          </mat-menu>
+        </div>
+      </div>
+      <div fxFlex.gt-md="45" fxFlex.lt-md="55" *ngIf="router.url == '/management' || router.url == '/management/events' || router.url == '/management/media' || router.url == '/management/events' || router.url == '/management/hours' || router.url == '/management/menu' || router.url == '/management/message'  || router.url == '/management/images' || router.url == '/management/about'">
+        <button mat-icon-button [matMenuTriggerFor]="menuAd" class="admin-nav-btn">
+            <mat-icon class="account_icon">account_circle</mat-icon>
+          </button>
+          <mat-menu #menuAd="matMenu">
+              <button mat-menu-item routerLink="/management/about">
+                <span>About</span>
+              </button>
+            <button mat-menu-item routerLink="/management/events">
+              <span>Events</span>
+            </button>
+            <button mat-menu-item routerLink="/management/menu">
+              <span>Menu</span>
+            </button>
+            <button mat-menu-item routerLink="/management/hours">
+              <span>Hours</span>
+            </button>
+            <button mat-menu-item routerLink="/management/message">
+              <span>Message</span>
+            </button>
+            <button mat-menu-item routerLink="/management/images">
+              <span>Images</span>
+            </button>
+            <button mat-menu-item routerLink="/management/media">
+              <span>Media</span>
+            </button>
+            <mat-divider></mat-divider>
+            <button mat-menu-item (click)="signout()">
+              <span>Sign Out</span>
+            </button>
+          </mat-menu>
+      </div>
+    </div>
+  </nav>
+</div>
+
+
+
+
+
+
+<!--
+<div class="top-bar" fxLayout.gt-md="row wrap" fxHide.lt-md *ngIf="router.url !== '/login'">
+ 
+  <div fxFlex="35" class="logo_img">
+    <img src="./assets/images/nugget_txt.png">
+  </div>
+  <div fxFlex="7"  >
+    <button mat-button color="primary" class="homeBtn">Home</button>
+  </div>
+  <div fxFlex="7" *ngIf="!(auth.loggedIn | async)">
+    <button mat-button class="navBtn" [ngx-scroll-to]="'#about'">About</button>
+  </div>
+  <div fxFlex="7" *ngIf="!(auth.loggedIn | async)">
+    <button mat-button class="navBtn" [ngx-scroll-to]="'#menu'">Menu</button>
+  </div>
+  <div fxFlex="7" *ngIf="!(auth.loggedIn | async)">
+    <button mat-button class="navBtn" [ngx-scroll-to]="'#events'">Events</button>
+  </div>
+  <div fxFlex="7" *ngIf="!(auth.loggedIn | async)">
+    <button mat-button class="navBtn" [ngx-scroll-to]="'#media'">Media</button>
+  </div>
+  <div fxFlex="7" *ngIf="!(auth.loggedIn | async)">
+    <button mat-button class="navBtn" [ngx-scroll-to]="'#gallery'">Gallery</button>
+  </div>
+  <div fxFlex="7" *ngIf="!(auth.loggedIn | async)">
+    <button mat-button class="navBtn" [ngx-scroll-to]="'#location'">Location</button>
+  </div>
+  <div fxFlex="7" *ngIf="!(auth.loggedIn | async)">
+    <button mat-button class="navBtn" [ngx-scroll-to]="'#shuttle'">Shuttle</button>
+  </div>
+  <div fxFlex="4" *ngIf="!(auth.loggedIn | async)">
+    <a href="https://www.facebook.com/TheNuggetMountainBar" target="_blank"><img src="../assets/images/f_logo_RGB-White_58.png" width="20px"></a>
+  </div>
+  <div fxFlex="4" *ngIf="!(auth.loggedIn | async)">
+    <a href="https://www.instagram.com/thenuggetmountainbar/" target="_blank"><img src="../assets/images/glyph-logo_May2016.png" class="ig" width="20px"></a>
+  </div>
+
+</div>
+
+<div class="top-bar" fxLayout.gt-md="row wrap" fxShow.lt-md *ngIf="router.url == '/management' || router.url == '/management/events' || router.url == '/management/menu'  || router.url == '/management/hours' || router.url == '/management/message' || router.url == '/management/images'">
+  <div fxFlex="7" fxFlexOffset="85" *ngIf="(auth.loggedIn | async)">
+    <button mat-icon-button [matMenuTriggerFor]="menuAd">
+      <mat-icon class="account_icon">account_circle</mat-icon>
+    </button>
+    <mat-menu #menuAd="matMenu">
+      <button mat-menu-item routerLink="/management/events">
+        <span>Events</span>
+      </button>
+      <button mat-menu-item routerLink="/management/menu">
+        <span>Menu</span>
+      </button>
+      <button mat-menu-item routerLink="/management/hours">
+        <span>Hours</span>
+      </button>
+      <button mat-menu-item routerLink="/management/message">
+        <span>Message</span>
+      </button>
+      <button mat-menu-item routerLink="/management/images">
+        <span>Images</span>
+      </button>
+      <mat-divider></mat-divider>
+      <button mat-menu-item (click)="signout()">
+        <span>Sign Out</span>
+      </button>
+    </mat-menu>
+  </div>
+</div>
+
+<div fxLayout class="top-bar" fxHide.gt-md *ngIf="!(auth.loggedIn | async) && router.url == '/'">
+  <div fxFlex="90">
+    <img src="./assets/images/nugget_txt.png" class="mobile_img">
+  </div>
+  <div fxFlex="10">
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item [ngx-scroll-to]="'#about'">
+        <span>About</span>
+      </button>
+      <button mat-menu-item [ngx-scroll-to]="'#menu'">
+        <span>Menu</span>
+      </button>
+      <button mat-menu-item [ngx-scroll-to]="'#events'">
+        <span>Events</span>
+      </button>
+      <button mat-menu-item [ngx-scroll-to]="'#media'">
+        <span>Media</span>
+      </button>
+      <button mat-menu-item [ngx-scroll-to]="'#galleryMob'">
+        <span>Gallery</span>
+      </button>
+      <button mat-menu-item [ngx-scroll-to]="'#location'">
+        <span>Location</span>
+      </button>
+      <button mat-menu-item [ngx-scroll-to]="'#shuttle'">
+        <span>Shuttle</span>
+      </button>
+    </mat-menu>
+  </div>
+</div>
+-->
+

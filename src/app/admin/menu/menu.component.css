@@ -1,0 +1,24 @@
+h1 {
+  color: rgba(0,0,0,0.86);
+  text-shadow: none;
+  margin: 0;
+}
+h2 {
+  color: rgba(0,0,0,0.70);
+  text-shadow: none;
+}
+.mat-divider {
+  border-top-color: rgba(0,0,0,0.56);
+}
+.full-width {
+  width: 100%;
+}
+.right {
+  float: right;
+}
+.currentDrinks {
+  margin: 20px 0;
+}
+.drinkForm {
+  margin: 20px 0 0;
+}

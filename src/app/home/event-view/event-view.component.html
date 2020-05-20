@@ -1,0 +1,43 @@
+<app-loading *ngIf="loadingEvents"></app-loading>
+<div *ngIf="!loadingEvents && eventList.length >= 1; else noEvents">
+  <mat-card *ngFor="let event of eventList">
+    <mat-card-content>
+      <h1 class="mat-headline"><strong>{{event.title}}</strong></h1>
+      <h2 class="mat-title dateTxt">
+        <span *ngIf="event.type !== 1">{{event.startTime | date:'longDate'}} </span>
+        <span *ngIf="event.allDay !== 1"><span *ngIf="event.type == 0"> | </span>{{event.startTime | date:'shortTime': '-0600'}}<span *ngIf="event.endTime !== '0000-00-00 00:00:00'"> - {{event.endTime | date:'shortTime'}}</span></span>
+      </h2>
+      <p class="mat-body eventPad" *ngIf="event.description !== 'null'">{{event.description}}</p>
+    </mat-card-content>
+  </mat-card>
+</div>
+<ng-template #noEvents>
+    <div fxLayout fxLayoutAlign="center center">
+        <div fxFlex.gt-md="60" fxFlex.lt-md="80">
+          <mat-card>
+            <h2 class="mat-title">There are no upcoming events.</h2>
+          </mat-card>
+        </div>
+      </div>
+</ng-template>
+
+
+
+
+
+
+
+
+
+
+<!--
+  <div fxLayout *ngIf="!eventList?.length">
+      <div fxFlex.gt-md="40" fxFlex.lt-md="80" fxFlexOffset.gt-md="30" fxFlexOffset.lt-md="10">
+        <mat-card class="eventLoading">
+          <mat-card-content>
+            <h2 class="mat-title">There are no upcoming events.</h2>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+-->

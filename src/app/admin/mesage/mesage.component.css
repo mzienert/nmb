@@ -1,0 +1,11 @@
+.full-width {
+    width: 100%;
+  }
+  .msgForm {
+    margin: 20px 0 0;
+  }
+  h1 {
+    color: rgba(0,0,0,0.86);
+    text-shadow: none;
+    margin: 0;
+  }

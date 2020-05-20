@@ -1,0 +1,48 @@
+<div fxFlex.gt-md="50" fxFlexOffset.gt-md="25" fxFlex.lt-md="90">
+  <mat-card>
+    <div fxLayout="row wrap">
+      <div fxFlex="50">
+        <h1 class="mat-headline">Drink Menu</h1>
+      </div>
+      <div fxFlex="50">
+        <button mat-raised-button class="right" color="primary" (click)="createEvent()" *ngIf="!this.create"><i class="material-icons">create</i> Add Drink</button>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+    <form [formGroup]="drinkForm" (ngSubmit)="saveDrink()" *ngIf="this.create" class="drinkForm">
+      <div fxLayout="row wrap" fxLayoutGap="20px">
+        <div fxFlex.gt-md="calc(80%-20px)">
+          <mat-form-field class="full-width">
+            <mat-label>Drink Name</mat-label>
+            <input matInput formControlName="name">
+          </mat-form-field>
+        </div>
+        <div fxFlex="calc(100%-20px)">
+            <editor apiKey="3aqchid463ppkgud4zmpuzlf5e2u06zcy3xl0dzhizuw6949" [init]="{plugins: 'link'}" formControlName="description"></editor>
+        </div>
+        <div fxFlex.gt-md="10%" fxFlex.lt-md="30%">
+          <button mat-raised-button color="primary" type="submit"><i class="material-icons">done</i> Save</button>
+        </div>
+        <div fxFlex.gt-md="10%" fxFlex.lt-md="30%">
+          <button mat-raised-button color="accent" (click)="this.create = false && this.id = null" *ngIf="this.create"><i class="material-icons">close
+          </i> Hide</button>
+        </div>
+        <div fxFlex="20">
+          <mat-spinner [diameter]="30" *ngIf="this.loading"></mat-spinner>
+        </div>
+      </div>
+    </form>
+    <div fxLayout="row wrap" fxLayoutAlign="center center" class="currentDrinks">
+      <div fxFlex="15">
+        <mat-spinner [diameter]="30" *ngIf="this.loadingDrinks"></mat-spinner>
+      </div>
+    </div>
+    <mat-action-list>
+      <button mat-list-item *ngFor="let drink of drinkList" (click)="getDrink(drink.id)">
+        <mat-icon mat-list-icon>local_drink</mat-icon>
+        <h4 mat-line>{{drink.name}}</h4>
+        <p class="mat-body">{{drink.price}}</p>
+      </button>
+    </mat-action-list>
+  </mat-card>
+</div>
