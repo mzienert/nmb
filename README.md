@@ -1,6 +1,6 @@
 # The Nugget Mountain Bar
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.2.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.2. There are no CI/CD pipelines so deplyements are done manually.
 
 ## Local Development
 
@@ -12,7 +12,7 @@ npm run start
 ```
 ## Frontend Deployment
 
-The frontend application is hosted in AWS S3.  The deployment is handled by the AWS Amplify library.
+The frontend application is hosted in AWS S3.  The deployment is handled by the <a href="https://docs.amplify.aws/start/q/integration/js" target="_blank">AWS Amplify</a> library using the JavaScript integration.
 
 You will need the AWS SDK as well as the AWS Amplify library installed on your local machine and to configure a profile using IAM credentials in order to deploy to S3.
 ```
