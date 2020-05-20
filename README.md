@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Local Development
 
-The frontend requires the Angular CLI  >9
+The frontend was initially developed using the Angular CLI version 7.0.2 and has since been upgraded.  It now requires the Angular CLI  > ^9.1.6
 
 To run locally:
 ```
