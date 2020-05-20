@@ -17,13 +17,27 @@ router
     };
 
     const onScan = (err, data) => {
-      if (err) console.log(JSON.stringify(err, null, 2))
-      res.send(data)
+      if (err) console.log(JSON.stringify(err, null, 2));
+      res.send(JSON.stringify(data, null, 2))
     }
     docClient.scan(params, onScan);
   })
-  .get('/:id', (req, res) => {
-    console.log(process.env)
+  .get('/:id/:date', (req, res) => {
+    const table = 'Events';
+    const eventId = parseInt(req.params.id);
+    const eventDate = parseInt(req.params.date);
+    const params = {
+      TableName: table,
+      Key:{
+        "id": eventId,
+        "date": eventDate,
+      }
+    };
+
+    docClient.get(params, function(err, data) {
+      if (err) console.error("Unable to read item. Error JSON:", JSON.stringify(err, null, 2));
+      res.send(JSON.stringify(data, null, 2));
+    });
   })
 
 module.exports = router;

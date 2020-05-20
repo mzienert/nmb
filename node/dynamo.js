@@ -28,12 +28,12 @@ AWS.config.update({
 var params = {
   TableName : "Events",
   KeySchema: [
-    { AttributeName: "title", KeyType: "HASH"},  //Partition key
+    { AttributeName: "id", KeyType: "HASH"},  //Partition key
     { AttributeName: "date", KeyType: "RANGE" }  //Sort key
   ],
   AttributeDefinitions: [
     { AttributeName: "date", AttributeType: "N" },
-    { AttributeName: "title", AttributeType: "S" }
+    { AttributeName: "id", AttributeType: "N" }
   ],
   ProvisionedThroughput: {
     ReadCapacityUnits: 10,
@@ -49,18 +49,20 @@ dynamodb.createTable(params, function(err, data) {
   }
 });*/
 
+
 var docClient = new AWS.DynamoDB.DocumentClient();
 
 var table = "Events";
 
 var date = Date.now();
-var title = "The Big New Movie 5";
+var title = "The Big New Movie 4";
 
 var params = {
   TableName:table,
   Item:{
     "date": date,
     "title": title,
+    "id": 4,
     "info":{
       "plot": "Nothing happens at all.",
       "rating": 0
@@ -76,5 +78,6 @@ docClient.put(params, function(err, data) {
     console.log("Added item:", JSON.stringify(data, null, 2));
   }
 });
+
 
 
