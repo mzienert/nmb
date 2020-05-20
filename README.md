@@ -5,6 +5,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Local Development
 
 The frontend requires the Angular CLI  >9
+
 To run locally
 ```
 npm run start
