@@ -14,7 +14,7 @@ npm run start
 
 The frontend application is hosted in AWS S3.  The deployment is handled by the AWS Amplify library.
 
-You will need the AWS SDK installed on your local machine and to configure a profile using IAM credentials in order to deploy to S3.
+You will need the AWS SDK as well as the AWS Amplify library installed on your local machine and to configure a profile using IAM credentials in order to deploy to S3.
 ```
 amplify publish
 ```
