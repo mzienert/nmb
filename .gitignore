@@ -48,3 +48,5 @@ build/
 dist/
 node_modules/
 
+#env
+node/.env

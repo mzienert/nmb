@@ -129,12 +129,6 @@ app.get('/image-two', (req, res) => {
   });
 })
 
-app.get('/image-bg', (req, res) => {
-  connection.query(`SELECT name FROM nmb.images WHERE bg = 1`, function (err, result) {
-    if(err) throw err;
-    res.send(result);
-  });
-})
 
 app.post('/update-image-one', (req, res) => {
   connection.query(`UPDATE nmb.images SET one = 0`, function (err, result) {

@@ -3,7 +3,8 @@ export class Images {
     name: string;
   }
 
-  export interface Album {
-    src: string;
-    thumb: string;
-  }
+export interface Album {
+  src: string;
+  thumb: string;
+}
+

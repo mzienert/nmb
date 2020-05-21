@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
+import { AboutService} from '../../services/about.service';
 
 @Component({
   selector: 'app-home-view',
@@ -10,14 +11,14 @@ import { environment } from '../../../environments/environment';
 export class HomeViewComponent implements OnInit {
 
   baseUrl = environment.baseUrl;
-  imgOne: string;
+  bgImg: string;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private aboutService: AboutService) { }
 
   ngOnInit() {
-    this.http.get(`${this.baseUrl}/image-bg`).subscribe(res => {
-      this.imgOne = `https://nmb-compress.s3-us-west-2.amazonaws.com/public/${res[0].name}`;
-    })
+    this.aboutService.getBg().subscribe((data: any) => {
+      this.bgImg = data.Item.content;
+    });
   }
 
 }

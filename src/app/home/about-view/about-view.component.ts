@@ -15,11 +15,13 @@ export class AboutViewComponent implements OnInit {
   c1: string;
   c2: string;
 
+
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
 
-    this.http.get(`${this.baseUrl}/about-one`).subscribe(res => {
+
+   /* this.http.get(`${this.baseUrl}/about-one`).subscribe(res => {
       this.c1 = res[0].content;
     });
     this.http.get(`${this.baseUrl}/about-two`).subscribe(res => {
@@ -31,7 +33,7 @@ export class AboutViewComponent implements OnInit {
     })
     this.http.get(`${this.baseUrl}/image-two`).subscribe(res => {
       this.imgTwo = `https://nmb-compress.s3-us-west-2.amazonaws.com/public/${res[0].name}`;
-    })
+    })*/
   }
 
 }

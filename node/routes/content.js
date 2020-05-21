@@ -3,9 +3,13 @@ const router = express.Router();
 const { getBg } = require('../queries/content');
 
 router
-  .get('/bg-img', async (req, res) => {
-    const result = await getBg();
-    res.send(result);
+  .get('/bg-img', async (req, res, next) => {
+    try {
+      const result = await getBg();
+      res.send(result);
+    } catch (err) {
+      next(err)
+    }
   });
 
 module.exports = router;
