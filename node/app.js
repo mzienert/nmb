@@ -14,8 +14,11 @@ app.use(function(req, res, next) {
   next();
 });
 
-const events = require('./routes/events')
-app.use('/events', events)
+const events = require('./routes/events');
+app.use('/events', events);
+
+const content = require('./routes/content');
+app.use('/content', content);
 
 /*app.get('/get-menu', (req, res) => {
   connection.query(`SELECT * FROM nmb.menu ORDER BY pos ASC`, function (err, result) {

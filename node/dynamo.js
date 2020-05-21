@@ -1,4 +1,4 @@
-
+require('dotenv').config();
 /**
  * Copyright 2010-2019 Amazon.com, Inc. or its affiliates. All Rights Reserved.
  *
@@ -12,6 +12,7 @@
  * CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License.
  */
+
 var AWS = require("aws-sdk");
 
 AWS.config.update({
@@ -22,18 +23,18 @@ AWS.config.update({
   secretAccessKey: process.env.SECRET_ACCESS_KEY,
 });
 
-
-/*var dynamodb = new AWS.DynamoDB();
+/*
+var dynamodb = new AWS.DynamoDB();
 
 var params = {
-  TableName : "Events",
+  TableName : "Content",
   KeySchema: [
     { AttributeName: "id", KeyType: "HASH"},  //Partition key
-    { AttributeName: "date", KeyType: "RANGE" }  //Sort key
+    { AttributeName: "name", KeyType: "RANGE" }  //Sort key
   ],
   AttributeDefinitions: [
-    { AttributeName: "date", AttributeType: "N" },
-    { AttributeName: "id", AttributeType: "N" }
+    { AttributeName: "id", AttributeType: "N" },
+    { AttributeName: "name", AttributeType: "S" }
   ],
   ProvisionedThroughput: {
     ReadCapacityUnits: 10,
@@ -52,21 +53,15 @@ dynamodb.createTable(params, function(err, data) {
 
 var docClient = new AWS.DynamoDB.DocumentClient();
 
-var table = "Events";
+var table = "Content";
 
-var date = Date.now();
-var title = "The Big New Movie 4";
+var name = "bg-img";
 
 var params = {
   TableName:table,
   Item:{
-    "date": date,
-    "title": title,
-    "id": 4,
-    "info":{
-      "plot": "Nothing happens at all.",
-      "rating": 0
-    }
+    "name": name,
+    "id": 3,
   }
 };
 
@@ -78,6 +73,8 @@ docClient.put(params, function(err, data) {
     console.log("Added item:", JSON.stringify(data, null, 2));
   }
 });
+
+
 
 
 

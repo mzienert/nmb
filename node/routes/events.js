@@ -1,45 +1,20 @@
 const express = require('express');
 const router = express.Router();
-const docClient = require('../config/db');
+const { listAll, getEvent } = require('../queries/events');
 
 router
-  .get('/list-all', (req, res) => {
-    const params = {
-      TableName: "Events",
-      ProjectionExpression: "title",
-      FilterExpression: "#dt < :cur_dt",
-      ExpressionAttributeNames: {
-        "#dt": "date",
-      },
-      ExpressionAttributeValues: {
-        ":cur_dt": Date.now(),
-      }
-    };
-
-    const onScan = (err, data) => {
-      if (err) console.log(JSON.stringify(err, null, 2));
-      res.send(JSON.stringify(data, null, 2))
-    }
-    docClient.scan(params, onScan);
+  .get('/list-all', async (req, res) => {
+    const result = await listAll();
+    res.send(result);
   })
-  .get('/:id/:date', (req, res) => {
-    const table = 'Events';
+  .get('/:id/:date', async (req, res) => {
     const eventId = parseInt(req.params.id);
     const eventDate = parseInt(req.params.date);
-    const params = {
-      TableName: table,
-      Key:{
-        "id": eventId,
-        "date": eventDate,
-      }
-    };
 
-    docClient.get(params, function(err, data) {
-      if (err) console.error("Unable to read item. Error JSON:", JSON.stringify(err, null, 2));
-      res.send(JSON.stringify(data, null, 2));
-    });
-  })
-  //.post('create', ())
+    const result = await getEvent(eventId, eventDate);
+    res.send(result);
+  });
+
 
 module.exports = router;
 
