@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { getBg, getBlock } = require('../queries/content');
+const { getBg, getBlock, updateContent } = require('../queries/content');
 
 router
   .get('/bg-img', async (req, res, next) => {
@@ -15,6 +15,15 @@ router
     const id = req.params.id;
     try {
       const result = await getBlock(id);
+      res.send(result);
+    } catch (err) {
+      next(err)
+    }
+  })
+  .post('/update', async (req, res, next) => {
+    const aboutData = req.body;
+    try {
+      const result = await updateContent(aboutData);
       res.send(result);
     } catch (err) {
       next(err)

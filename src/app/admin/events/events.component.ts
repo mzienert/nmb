@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EventService } from '../../services/event.service';
 import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 export interface Times {
   value: string;

@@ -16,7 +16,10 @@ export class AboutViewComponent implements OnInit {
   cOne: string;
   cTwo: string;
 
-  constructor(private http: HttpClient, private aboutService: AboutService) { }
+  constructor(
+    private http: HttpClient,
+    private aboutService: AboutService
+  ) { }
 
   ngOnInit() {
 

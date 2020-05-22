@@ -23,4 +23,8 @@ export class AboutService {
     return this.http.get<any>(`${this.baseUrl}/content/block/2`);
   }
 
+  update(data): Observable<any> {
+    return this.http.post(`${this.baseUrl}/content/update`, data);
+  }
+
 }

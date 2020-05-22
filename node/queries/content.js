@@ -29,7 +29,44 @@ const getBlock = async (id) => {
   return JSON.stringify(result)
 }
 
+const updateContent = async (data) => {
+  const results = [];
+  const records = [1,2];
+
+  for(const record of records) {
+    let content;
+
+    if (record === 1) {
+      content = data.one;
+    } else if (record === 2) {
+      content = data.two;
+    }
+
+    const blockStr = `block-${record}`;
+    const params = {
+      TableName:table,
+      Key:{
+        "id": record,
+        "name": blockStr.toString()
+      },
+      UpdateExpression: "set content = :c",
+      ExpressionAttributeValues:{
+        ":c": content,
+
+      },
+      ReturnValues:"UPDATED_NEW"
+    };
+
+    const result = await docClient.update(params).promise();
+    results.push(result)
+  }
+
+  return JSON.stringify(results);
+
+}
+
 module.exports = {
   getBg,
   getBlock,
+  updateContent,
 }
