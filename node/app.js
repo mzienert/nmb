@@ -65,26 +65,6 @@ app.get('/get-hours', (req, res) => {
   });
 })
 
-app.get('/get-message', (req, res) => {
-  connection.query(`SELECT * FROM nmb.messages WHERE id = 1`, function (err, result) {
-    if(err) throw err;
-    res.send(result);
-  });
-})
-
-app.post('/update-message', (req, res) => {
-  console.log(req.body)
-  let msg;
-  if(req.body.text === null) {
-    msg = '';
-  } else {
-    msg = req.body.text;
-  }
-  connection.query(`UPDATE nmb.messages SET message = '${msg}' WHERE id = 1`, function (err, result) {
-    if(err) throw err;
-    res.send(result);
-  });
-})
 
 app.post('/insert-image', (req, res) => {
   connection.query(`INSERT INTO nmb.images(name, type) VALUE ('${req.body.name}', ${req.body.type})`, function (err, result) {
@@ -160,28 +140,6 @@ app.post('/update-image-bg', (req, res) => {
   });
 })
 
-app.get('/about-one', (req, res) => {
-  connection.query(`SELECT * FROM nmb.about WHERE id = 1`, function (err, result) {
-    if(err) throw err;
-    res.send(result);
-  });
-})
-
-app.get('/about-two', (req, res) => {
-  connection.query(`SELECT * FROM nmb.about WHERE id = 2`, function (err, result) {
-    if(err) throw err;
-    res.send(result);
-  });
-})
-
-app.post('/update-about', (req, res) => {
-  connection.query(`UPDATE nmb.about SET content = '${req.body.one}' WHERE id = 1`, function (err, result) {
-    if(err) throw err;
-  });
-  connection.query(`UPDATE nmb.about SET content = '${req.body.two}' WHERE id = 2`, function (err, result) {
-    if(err) throw err;
-    res.send(result);
-  });
-})*/
+*/
 
 module.exports = app

@@ -34,4 +34,5 @@ export class AboutService {
   updateMessage(data): Observable<any> {
     return this.http.post(`${this.baseUrl}/content/update-message`, data);
   }
+
 }
