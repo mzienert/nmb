@@ -14,25 +14,14 @@ const getBg = async () => {
   return JSON.stringify(result)
 }
 
-const getBlockOne = async () => {
+const getBlock = async (id) => {
+  const idInt = parseInt(id);
+  const blockStr = `block-${id}`;
   const params = {
     TableName: table,
     Key: {
-      "id": 1,
-      "name": "block-1",
-    },
-  };
-
-  const result = await docClient.get(params).promise();
-  return JSON.stringify(result)
-}
-
-const getBlockTwo = async () => {
-  const params = {
-    TableName: table,
-    Key: {
-      "id": 2,
-      "name": "block-2",
+      "id": idInt,
+      "name": blockStr.toString(),
     },
   };
 
@@ -42,6 +31,5 @@ const getBlockTwo = async () => {
 
 module.exports = {
   getBg,
-  getBlockOne,
-  getBlockTwo,
+  getBlock,
 }

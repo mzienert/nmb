@@ -14,4 +14,13 @@ export class AboutService {
   getBg(): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/content/bg-img`);
   }
+
+  getBlockOne(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/content/block/1`);
+  }
+
+  getBlockTwo(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/content/block/2`);
+  }
+
 }
