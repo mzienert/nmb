@@ -27,4 +27,8 @@ export class AboutService {
     return this.http.post(`${this.baseUrl}/content/update`, data);
   }
 
+  getMessage(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/content/message`);
+  }
+
 }

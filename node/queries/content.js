@@ -11,7 +11,7 @@ const getBg = async () => {
   };
 
   const result = await docClient.get(params).promise();
-  return JSON.stringify(result)
+  return JSON.stringify(result);
 }
 
 const getBlock = async (id) => {
@@ -26,7 +26,7 @@ const getBlock = async (id) => {
   };
 
   const result = await docClient.get(params).promise();
-  return JSON.stringify(result)
+  return JSON.stringify(result);
 }
 
 const updateContent = async (data) => {
@@ -58,15 +58,29 @@ const updateContent = async (data) => {
     };
 
     const result = await docClient.update(params).promise();
-    results.push(result)
+    results.push(result);
   }
 
   return JSON.stringify(results);
 
 }
 
+const getMessage = async () => {
+  const params = {
+    TableName: table,
+    Key: {
+      "id": 4,
+      "name": "message",
+    },
+  };
+
+  const result = await docClient.get(params).promise();
+  return JSON.stringify(result)
+}
+
 module.exports = {
   getBg,
   getBlock,
   updateContent,
+  getMessage,
 }

@@ -23,11 +23,11 @@ AWS.config.update({
   secretAccessKey: process.env.SECRET_ACCESS_KEY,
 });
 
-/*
+
 var dynamodb = new AWS.DynamoDB();
 
 var params = {
-  TableName : "Content",
+  TableName : "Message",
   KeySchema: [
     { AttributeName: "id", KeyType: "HASH"},  //Partition key
     { AttributeName: "name", KeyType: "RANGE" }  //Sort key
@@ -48,9 +48,10 @@ dynamodb.createTable(params, function(err, data) {
   } else {
     console.log("Created table. Table description JSON:", JSON.stringify(data, null, 2));
   }
-});*/
+});
 
 
+/*
 var docClient = new AWS.DynamoDB.DocumentClient();
 
 var table = "Content";
@@ -73,6 +74,7 @@ docClient.put(params, function(err, data) {
     console.log("Added item:", JSON.stringify(data, null, 2));
   }
 });
+*/
 
 
 

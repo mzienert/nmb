@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { getBg, getBlock, updateContent } = require('../queries/content');
+const { getBg, getBlock, updateContent, getMessage } = require('../queries/content');
 
 router
   .get('/bg-img', async (req, res, next) => {
@@ -29,6 +29,13 @@ router
       next(err)
     }
   })
-
+  .get('/message', async (req, res, next) => {
+    try {
+      const result = await getMessage();
+      res.send(result);
+    } catch (err) {
+      next(err)
+    }
+  });
 
 module.exports = router;
