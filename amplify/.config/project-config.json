@@ -1,6 +1,6 @@
 {
     "projectName": "nmb",
-    "version": "2.0",
+    "version": "3.0",
     "frontend": "javascript",
     "javascript": {
         "framework": "angular",
@@ -8,7 +8,7 @@
             "SourceDir": "src",
             "DistributionDir": "dist",
             "BuildCommand": "ng build --prod",
-            "StartCommand": "ng serve"
+            "StartCommand": "npm run start"
         }
     },
     "providers": [

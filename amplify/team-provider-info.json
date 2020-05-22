@@ -1,19 +1,15 @@
 {
-    "nmbenv": {
+    "prod": {
         "awscloudformation": {
-            "AuthRoleName": "nmb-nmbenv-20190824194254-authRole",
-            "UnauthRoleArn": "arn:aws:iam::282232948281:role/nmb-nmbenv-20190824194254-unauthRole",
-            "AuthRoleArn": "arn:aws:iam::282232948281:role/nmb-nmbenv-20190824194254-authRole",
+            "AuthRoleName": "amplify-nmb-prod-83726-authRole",
+            "UnauthRoleArn": "arn:aws:iam::282232948281:role/amplify-nmb-prod-83726-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::282232948281:role/amplify-nmb-prod-83726-authRole",
             "Region": "us-west-2",
-            "DeploymentBucketName": "nmb-nmbenv-20190824194254-deployment",
-            "UnauthRoleName": "nmb-nmbenv-20190824194254-unauthRole",
-            "StackName": "nmb-nmbenv-20190824194254",
-            "StackId": "arn:aws:cloudformation:us-west-2:282232948281:stack/nmb-nmbenv-20190824194254/a8d22ce0-c6d9-11e9-9db3-0a6cf1beac66"
-        },
-        "categories": {
-            "auth": {
-                "nmbe10a734b": {}
-            }
+            "DeploymentBucketName": "amplify-nmb-prod-83726-deployment",
+            "UnauthRoleName": "amplify-nmb-prod-83726-unauthRole",
+            "StackName": "amplify-nmb-prod-83726",
+            "StackId": "arn:aws:cloudformation:us-west-2:282232948281:stack/amplify-nmb-prod-83726/a2b70fd0-9b70-11ea-80b9-06be751c1bd6",
+            "AmplifyAppId": "d30hz7ztjd3qpt"
         }
     }
 }
