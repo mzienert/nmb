@@ -13,19 +13,21 @@ export class AboutViewComponent implements OnInit {
   baseUrl = environment.baseUrl;
   imgOne: string;
   imgTwo: string;
-  c1: string;
-  c2: string;
+  cOne: string;
+  cTwo: string;
 
   constructor(private http: HttpClient, private aboutService: AboutService) { }
 
   ngOnInit() {
 
     this.aboutService.getBlockOne().subscribe((data: any) => {
-      console.log(data);
+      this.cOne = data.Item.content;
+      this.imgOne = data.Item.img;
     });
 
     this.aboutService.getBlockTwo().subscribe((data: any) => {
-      console.log(data);
+      this.cTwo = data.Item.content;
+      this.imgTwo = data.Item.img;
     });
 
   }
