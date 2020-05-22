@@ -10,6 +10,11 @@
             "StackName": "amplify-nmb-prod-83726",
             "StackId": "arn:aws:cloudformation:us-west-2:282232948281:stack/amplify-nmb-prod-83726/a2b70fd0-9b70-11ea-80b9-06be751c1bd6",
             "AmplifyAppId": "d30hz7ztjd3qpt"
+        },
+        "categories": {
+            "auth": {
+                "nmbcd385cf2": {}
+            }
         }
     }
 }
