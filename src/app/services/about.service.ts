@@ -23,12 +23,15 @@ export class AboutService {
     return this.http.get<any>(`${this.baseUrl}/content/block/2`);
   }
 
-  update(data): Observable<any> {
-    return this.http.post(`${this.baseUrl}/content/update`, data);
+  updateContent(data): Observable<any> {
+    return this.http.post(`${this.baseUrl}/content/update-content`, data);
   }
 
   getMessage(): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/content/message`);
   }
 
+  updateMessage(data): Observable<any> {
+    return this.http.post(`${this.baseUrl}/content/update-message`, data);
+  }
 }

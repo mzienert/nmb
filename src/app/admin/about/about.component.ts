@@ -20,12 +20,14 @@ export class AboutComponent implements OnInit {
     private fb: FormBuilder,
     private http: HttpClient,
     public snackbar: MatSnackBar,
-    private aboutService: AboutService
+    private aboutService: AboutService,
   ) {
+
     this.aboutForm = fb.group({
       'one': [null],
       'two': [null],
     });
+
   }
 
   ngOnInit() {
@@ -44,7 +46,7 @@ export class AboutComponent implements OnInit {
     const formData = this.aboutForm.value;
     this.disabled = true;
 
-    this.aboutService.update(formData).subscribe((data: any) => {
+    this.aboutService.updateContent(formData).subscribe((data: any) => {
       this.disabled = false;
       this.snackbar.open('About has been updated.', '', {
         duration: 4000

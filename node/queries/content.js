@@ -78,9 +78,30 @@ const getMessage = async () => {
   return JSON.stringify(result)
 }
 
+const updateMessage = async (data) => {
+  const content = data.text;
+  const params = {
+    TableName:table,
+    Key:{
+      "id": 4,
+      "name": "message"
+    },
+    UpdateExpression: "set content = :c",
+    ExpressionAttributeValues:{
+      ":c": content,
+
+    },
+    ReturnValues:"UPDATED_NEW"
+  };
+
+  const result = await docClient.update(params).promise();
+  return JSON.stringify(result)
+}
+
 module.exports = {
   getBg,
   getBlock,
   updateContent,
   getMessage,
+  updateMessage,
 }
