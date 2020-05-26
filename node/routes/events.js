@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { listAll, getEvent } = require('../queries/events');
+const { listAll, getEvent, createEvent } = require('../queries/events');
 
 router
   .get('/list-all', async (req, res) => {
@@ -12,6 +12,13 @@ router
     const eventDate = parseInt(req.params.date);
 
     const result = await getEvent(eventId, eventDate);
+    res.send(result);
+  })
+  .post('/create', async (req, res) => {
+
+
+
+    const result = await createEvent();
     res.send(result);
   });
 
@@ -26,21 +33,7 @@ app.post('/create-event', (req, res) => {
   });
 });
 
-app.get('/get-events', (req, res) => {
-  connection.query(`SELECT * FROM nmb.events WHERE startTime >= CURDATE() ORDER BY type DESC, startTime ASC`, function (err, result) {
-    if(err) throw err;
-    console.log(result)
-    res.send(result);
-  });
-});
 
-app.get('/get-event/:id', (req, res) => {
-  let id = req.params.id;
-  connection.query(`SELECT * FROM nmb.events WHERE id = ${id}`, function (err, result) {
-    if(err) throw err;
-    res.send(result);
-  });
-});
 
 app.post('/update-event/:id', (req, res) => {
   let id = req.params.id;
