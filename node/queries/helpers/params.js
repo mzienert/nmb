@@ -1,8 +1,7 @@
-const { constants } = require('../../constants/events');
+const constants = require('../../constants/events');
 
 const paramBuilder = data => {
   let params;
-
   switch (data.query) {
     case constants.LIST_EVENTS:
       return params = {
@@ -27,7 +26,17 @@ const paramBuilder = data => {
         }
       };
       break;
-    case constants.CREATE_EVENT:
+
+    case constants.GET_MAX_EVENT_ID:
+      return params = {
+        TableName: data.table,
+        ProjectionExpression: 'id',
+      }
+
+
+
+
+      break;
 
     default:;
   }

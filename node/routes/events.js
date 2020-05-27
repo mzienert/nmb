@@ -14,8 +14,7 @@ router
     const result = await getEvent(eventId, eventDate);
     res.send(result);
   })
-  .post('/create', async (req, res) => {
-
+  .get('/create', async (req, res) => {
 
 
     const result = await createEvent();
@@ -26,13 +25,6 @@ router
 module.exports = router;
 
 /*
-app.post('/create-event', (req, res) => {
-  connection.query(`INSERT INTO nmb.events (title, description, startTime, endTime, type, allDay) VALUES ('${req.body.name}', '${req.body.description}', '${req.body.date}', '${req.body.endTime}', '${req.body.type}', '${req.body.allDay}')`, function (err, result) {
-    if(err) throw err;
-    res.send(result);
-  });
-});
-
 
 
 app.post('/update-event/:id', (req, res) => {
