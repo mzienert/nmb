@@ -27,21 +27,29 @@ const getEvent = async (id, date) => {
   return JSON.stringify(result);
 }
 
-const createEvent = async () => {
-  const paramData = {
+const createEvent = async (eventData) => {
+  let paramData = {
     table,
     query: constants.GET_MAX_EVENT_ID,
   };
-  const params = paramBuilder(paramData);
+  let params = paramBuilder(paramData);
   const idResult = await docClient.scan(params).promise();
   const idList = [];
   for (const item of idResult.Items) {
     idList.push(item.id)
   }
-  const maxId = idList.sort((a, b) => b - a )[0];
-
-
-  return JSON.stringify(maxId);
+  const maxId = idList.length ? idList.sort((a, b) => b - a )[0] : 0;
+  paramData = {
+    table,
+    newId: maxId + 1,
+    date: eventData.date,
+    title: eventData.title,
+    body: eventData.body,
+    query: constants.CREATE_EVENT,
+  }
+  params = paramBuilder(paramData);
+  const insertResult = await docClient.put(params).promise();
+  return JSON.stringify(insertResult);
 }
 
 module.exports = {

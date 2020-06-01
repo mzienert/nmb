@@ -14,10 +14,14 @@ router
     const result = await getEvent(eventId, eventDate);
     res.send(result);
   })
-  .get('/create', async (req, res) => {
+  .post('/create/:title/:date/:body', async (req, res) => {
+    const eventData = {
+      title: req.body.title,
+      date: req.body.date,
+      body: req.body.body,
+    }
 
-
-    const result = await createEvent();
+    const result = await createEvent(eventData);
     res.send(result);
   });
 
