@@ -118,7 +118,7 @@ export class EventsComponent implements OnInit {
     this.create = true;
     this.loading = true;
     this.id = id;
-    this.http.get(`${this.baseUrl}/events/${id}/${date}`).subscribe(res => {
+    this.http.get<any>(`${this.baseUrl}/events/${id}/${date}`).subscribe(res => {
       this.loading = false;
       const dateTime = new Date(res.Item.date);
       const end = new Date(res.Item.endTime);
@@ -127,8 +127,8 @@ export class EventsComponent implements OnInit {
       const mins = this.minutes_with_leading_zeros(dateTime);
       const startTime = `${hours}:${mins}`;
       this.eventForm.get('date').setValue(startTime);
-      let endHours = end.getUTCHours();
-      let endMins = this.minutes_with_leading_zeros(end);
+      const endHours = end.getUTCHours();
+      const endMins = this.minutes_with_leading_zeros(end);
       const endTime = `${endHours}:${endMins}`;
       this.eventForm.get('endTime').setValue(endTime);
       this.eventForm.patchValue({
