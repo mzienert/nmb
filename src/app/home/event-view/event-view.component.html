@@ -4,8 +4,8 @@
     <mat-card-content>
       <h1 class="mat-headline"><strong>{{event.title}}</strong></h1>
       <h2 class="mat-title dateTxt">
-        <span *ngIf="event.type !== 1">{{event.startTime | date:'longDate'}} </span>
-        <span *ngIf="event.allDay !== 1"><span *ngIf="event.type == 0"> | </span>{{event.startTime | date:'shortTime': '-0600'}}<span *ngIf="event.endTime !== '0000-00-00 00:00:00'"> - {{event.endTime | date:'shortTime'}}</span></span>
+        <span *ngIf="event.type !== 1">{{event.date | date:'longDate'}} </span>
+        <span *ngIf="event.allDay !== 1"><span *ngIf="event.type == 0"> | </span>{{event.date | date:'shortTime': '-0600'}}<span *ngIf="event.endTime !== '0000-00-00 00:00:00'"> - {{event.endTime | date:'shortTime'}}</span></span>
       </h2>
       <p class="mat-body eventPad" *ngIf="event.description !== 'null'">{{event.description}}</p>
     </mat-card-content>

@@ -27,14 +27,14 @@ AWS.config.update({
 var dynamodb = new AWS.DynamoDB();
 
 var params = {
-  TableName : "Message",
+  TableName : "Events",
   KeySchema: [
     { AttributeName: "id", KeyType: "HASH"},  //Partition key
-    { AttributeName: "name", KeyType: "RANGE" }  //Sort key
+    { AttributeName: "date", KeyType: "RANGE" }  //Sort key
   ],
   AttributeDefinitions: [
     { AttributeName: "id", AttributeType: "N" },
-    { AttributeName: "name", AttributeType: "S" }
+    { AttributeName: "date", AttributeType: "S" }
   ],
   ProvisionedThroughput: {
     ReadCapacityUnits: 10,

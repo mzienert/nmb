@@ -21,6 +21,7 @@ const getEvent = async (id, date) => {
     date,
     query: constants.GET_EVENT,
   };
+  console.log('param query data', paramData)
   const params = paramBuilder(paramData);
 
   const result = await docClient.get(params).promise();
@@ -45,8 +46,12 @@ const createEvent = async (eventData) => {
     date: eventData.date,
     title: eventData.title,
     body: eventData.body,
+    type: eventData.type,
+    allDay: eventData.allDay,
+    endTime: eventData.endTime,
     query: constants.CREATE_EVENT,
   }
+
   params = paramBuilder(paramData);
   const insertResult = await docClient.put(params).promise();
   return JSON.stringify(insertResult);

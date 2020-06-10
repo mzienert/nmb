@@ -7,14 +7,6 @@ const paramBuilder = data => {
     case constants.LIST_EVENTS:
       return params = {
         TableName: data.table,
-        ProjectionExpression: 'title',
-        FilterExpression: '#dt < :cur_dt',
-        ExpressionAttributeNames: {
-          '#dt': 'date',
-        },
-        ExpressionAttributeValues: {
-          ':cur_dt': Date.now(),
-        },
       }
       break;
 
@@ -22,7 +14,7 @@ const paramBuilder = data => {
       return params = {
         TableName: data.table,
         Key:{
-          "id": data.id,
+          "id": parseInt(data.id),
           "date": data.date,
         }
       };
@@ -41,8 +33,11 @@ const paramBuilder = data => {
         Item: {
           id: parseInt(data.newId),
           title: data.title,
-          date: parseInt(data.date),
-          body: data.body,
+          date: data.date,
+          description: data.body,
+          type: data.type,
+          allDay: data.allDay,
+          endTime: data.endTime,
         }
       }
       break;

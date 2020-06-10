@@ -9,16 +9,19 @@ router
   })
   .get('/:id/:date', async (req, res) => {
     const eventId = parseInt(req.params.id);
-    const eventDate = parseInt(req.params.date);
+    const eventDate = req.params.date;
 
     const result = await getEvent(eventId, eventDate);
     res.send(result);
   })
-  .post('/create/:title/:date/:body', async (req, res) => {
+  .post('/create/', async (req, res) => {
     const eventData = {
-      title: req.body.title,
+      title: req.body.name,
       date: req.body.date,
-      body: req.body.body,
+      body: req.body.description,
+      type: req.body.type,
+      endTime: req.body.endTime,
+      allDay: req.body.allDay,
     }
 
     const result = await createEvent(eventData);
