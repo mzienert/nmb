@@ -10,7 +10,7 @@ import { Images, Album } from './images';
 })
 export class ImageViewComponent implements OnInit {
 
-  images: Images[] = [];
+  images: any = [];
   albums: Album[] = [];
   bucket: string;
 
@@ -23,17 +23,18 @@ export class ImageViewComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.imagesService.listImages().subscribe((data: Images[]) => {
-      this.images = data;
+    this.imagesService.listImages().subscribe((data: any) => {
+      console.log(data.Items)
+      this.images = data.Items;
       this.buildGallery();
-    })
+    });
   }
 
-  buildGallery() {   
+  buildGallery() {
     for (let i = 0; i < this.images.length; i++) {
-      const src = `${this.bucket}/${this.images[i].name}`;
+      const src = `${this.bucket}/${this.images[i].url}`;
       //const caption = 'Image ' + i + ' caption here';
-      const thumb = `${this.bucket}/${this.images[i].name}`;
+      const thumb = `${this.bucket}/${this.images[i].thumb}`;
       const album = {
         src: src,
         thumb: thumb
@@ -45,7 +46,7 @@ export class ImageViewComponent implements OnInit {
   open(index: number): void {
     this._lightbox.open(this.albums, index);
   }
- 
+
   close(): void {
     this._lightbox.close();
   }

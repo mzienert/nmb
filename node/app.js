@@ -14,6 +14,9 @@ app.use(function(req, res, next) {
   next();
 });
 
+const images = require('./routes/images');
+app.use('/images', images);
+
 const events = require('./routes/events');
 app.use('/events', events);
 

@@ -1,12 +1,12 @@
 const docClient = require('../config/db');
 const paramBuilder = require('./helpers/params')
-const constants = require('../constants/events');
+const eventConstants = require('../constants/events');
 const table = 'Events';
 
 const listAll = async () => {
   const paramData = {
     table,
-    query: constants.LIST_EVENTS,
+    query: eventConstants.LIST_EVENTS,
   };
   const params = paramBuilder(paramData);
 
@@ -19,7 +19,7 @@ const getEvent = async (id, date) => {
     table,
     id,
     date,
-    query: constants.GET_EVENT,
+    query: eventConstants.GET_EVENT,
   };
   console.log('param query data', paramData)
   const params = paramBuilder(paramData);
@@ -31,7 +31,7 @@ const getEvent = async (id, date) => {
 const createEvent = async (eventData) => {
   let paramData = {
     table,
-    query: constants.GET_MAX_EVENT_ID,
+    query: eventConstants.GET_MAX_EVENT_ID,
   };
   let params = paramBuilder(paramData);
   const idResult = await docClient.scan(params).promise();
@@ -49,7 +49,7 @@ const createEvent = async (eventData) => {
     type: eventData.type,
     allDay: eventData.allDay,
     endTime: eventData.endTime,
-    query: constants.CREATE_EVENT,
+    query: eventConstants.CREATE_EVENT,
   }
 
   params = paramBuilder(paramData);

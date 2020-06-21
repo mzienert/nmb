@@ -1,16 +1,17 @@
-const constants = require('../../constants/events');
+const eventConstants = require('../../constants/events');
+const imageConstants = require('../../constants/images');
 
 const paramBuilder = data => {
   let params;
 
   switch (data.query) {
-    case constants.LIST_EVENTS:
+    case eventConstants.LIST_EVENTS:
       return params = {
         TableName: data.table,
       }
       break;
 
-    case constants.GET_EVENT:
+    case eventConstants.GET_EVENT:
       return params = {
         TableName: data.table,
         Key:{
@@ -20,14 +21,14 @@ const paramBuilder = data => {
       };
       break;
 
-    case constants.GET_MAX_EVENT_ID:
+    case eventConstants.GET_MAX_EVENT_ID:
       return params = {
         TableName: data.table,
         ProjectionExpression: 'id',
       }
       break;
 
-    case constants.CREATE_EVENT:
+    case eventConstants.CREATE_EVENT:
       return params = {
         TableName: data.table,
         Item: {
@@ -38,6 +39,16 @@ const paramBuilder = data => {
           type: data.type,
           allDay: data.allDay,
           endTime: data.endTime,
+        }
+      }
+      break;
+
+    case imageConstants.LIST_IMAGES:
+      return params = {
+        TableName: 'Data',
+        Key:{
+          "page": 'Images',
+          "type": 'Image',
         }
       }
       break;
