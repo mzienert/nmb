@@ -4,7 +4,7 @@
       <div fxLayout="row wrap">
         <div fxFlex="50">
           <h1 class="mat-headline">About</h1>
-        </div>   
+        </div>
       </div>
       <mat-divider></mat-divider>
       <form [formGroup]="aboutForm" (ngSubmit)="saveAbout()">
@@ -16,7 +16,7 @@
                 <editor apiKey="3aqchid463ppkgud4zmpuzlf5e2u06zcy3xl0dzhizuw6949" [init]="{plugins: 'link'}" formControlName="two"></editor>
               </div>
               <div fxFlex.gt-md="10%" fxFlex.lt-md="30%">
-                  <button mat-raised-button color="primary" type="submit"><i class="material-icons">done</i> Save</button>
+                  <button mat-raised-button color="primary" type="submit" [disabled]="disabled"><i class="material-icons">done</i> Save</button>
                 </div>
           </div>
       </form>

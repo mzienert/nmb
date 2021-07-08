@@ -3,7 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { EventService } from '../../services/event.service';
 import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import * as moment from 'moment';
 
 export interface Times {
   value: string;
@@ -84,15 +85,15 @@ export class EventsComponent implements OnInit {
 
   ngOnInit() {
     this.create = false;
-    this.loadingEvents = true;
+    this.loadingEvents = false;
     this.eventService.getEvents().subscribe(res => {
       this.loadingEvents = false;
-      this.eventList = res;
+      this.eventList = res.Items;
+      //console.log(this.eventList)
     });
     this.loading = false;
     this.type = 0;
     this.allDay = 0;
-    
   }
 
   checkValue(event: any){
@@ -113,27 +114,26 @@ export class EventsComponent implements OnInit {
     return (dt.getMinutes() < 10 ? '0' : '') + dt.getMinutes();
   }
 
-  getEvent(id): void {
+  getEvent(id, date): void {
     this.create = true;
     this.loading = true;
     this.id = id;
-    this.http.get(`${this.baseUrl}/get-event/${id}`).subscribe(res => {
+    this.http.get<any>(`${this.baseUrl}/events/${id}/${date}`).subscribe(res => {
       this.loading = false;
-      const dateTime = new Date(res[0].startTime);
-      const end = new Date(res[0].endTime);
+      const dateTime = new Date(res.Item.date);
+      const end = new Date(res.Item.endTime);
       this.eventForm.get('date').setValue(dateTime);
-      const hours = dateTime.getHours();
+      const hours = dateTime.getUTCHours();
       const mins = this.minutes_with_leading_zeros(dateTime);
       const startTime = `${hours}:${mins}`;
-      this.eventForm.get('startTime').setValue(startTime);
-      let endHours = end.getUTCHours();
-      let endMins = this.minutes_with_leading_zeros(end);
+      this.eventForm.get('date').setValue(startTime);
+      const endHours = end.getUTCHours();
+      const endMins = this.minutes_with_leading_zeros(end);
       const endTime = `${endHours}:${endMins}`;
       this.eventForm.get('endTime').setValue(endTime);
-      console.log(endTime)
       this.eventForm.patchValue({
-        name: res[0].title,
-        description: res[0].description,
+        name: res.Item.title,
+        description: res.Item.description,
         date: dateTime,
         startTime: startTime,
         endTime: endTime
@@ -142,7 +142,6 @@ export class EventsComponent implements OnInit {
   }
 
   saveEvent(): void {
-
     if (this.eventForm.valid) {
       const data = this.eventForm.value;
       if (this.id == null) {
@@ -150,9 +149,9 @@ export class EventsComponent implements OnInit {
 
         let date;
         if (this.eventForm.value.type === 0) {
-          date = this.eventForm.value.date;
+          date = new Date(this.eventForm.value.date);
         } else {
-          date = new Date("January 01, 2050 00:00:00");
+          date = new Date("January 01, 2050 00:00");
         }
 
         if (this.allDay == 0) {
@@ -160,9 +159,9 @@ export class EventsComponent implements OnInit {
           const startFields = startTime.split(':');
           const startHours = startFields[0];
           const startMins = startFields[1];
-          date.setHours(startHours, startMins);
+          date.setHours(startHours, startMins, '00', '00');
         } else {
-          date.setHours(0o0, 0o0, 0o0);
+          date.setHours(0o0, 0o0);
         }
 
 
@@ -181,7 +180,7 @@ export class EventsComponent implements OnInit {
         data.type = this.eventForm.value.type;
         data.allDay = this.allDay;
 
-        this.http.post(`${this.baseUrl}/create-event`, data).subscribe(res => {
+        this.http.post(`${this.baseUrl}/events/create`, data).subscribe(res => {
           this.create = false;
           this.loading = false;
           this.snackbar.open('Your event has been created.', '', {
@@ -201,4 +200,5 @@ export class EventsComponent implements OnInit {
     }
   }
 
-}
+
+  }

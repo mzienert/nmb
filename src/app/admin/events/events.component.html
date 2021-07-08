@@ -58,10 +58,10 @@
               </mat-form-field>
             </div>
             <div fxFlex="calc(25%-20px)">
-      
+
                   <mat-label>All Day - </mat-label>
                   <mat-checkbox class="example-margin" (change)="checkValue($event)">Checked</mat-checkbox>
-            
+
               </div>
           <div fxFlex="calc(100%-20px)">
             <mat-form-field class="full-width">
@@ -87,7 +87,8 @@
         </div>
         <div fxFlex="100" *ngIf="!this.loadingEvents">
           <mat-action-list>
-            <button mat-list-item *ngFor="let event of eventList" (click)="getEvent(event.id)">
+            <button mat-list-item *ngFor="let event of eventList" (click)="getEvent(event.id, event.date)">
+              {{event.date}}
               <mat-icon mat-list-icon>event_note</mat-icon>
               <h4 mat-line>{{event.title}}</h4>
               <p mat-line> {{event.date | date}} - {{event.date |date : 'shortTime'}} </p>

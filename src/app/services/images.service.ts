@@ -13,12 +13,12 @@ export class ImagesService {
 
   constructor(private http: HttpClient) { }
 
-  listImages(): Observable<Images[]> {
-    return this.http.get<Images[]>(`${this.baseUrl}/list-images`)
+  listImages(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/images/list-all`);
   }
 
   listMedia(): Observable<Images[]> {
     return this.http.get<Images[]>(`${this.baseUrl}/list-media`)
   }
-  
+
 }

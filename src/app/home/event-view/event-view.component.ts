@@ -20,7 +20,7 @@ export class EventViewComponent implements OnInit {
     this.loadingEvents = true;
     this.eventService.getEvents().subscribe(res => {
       this.loadingEvents = false;
-      this.eventList = res;
+      this.eventList = res.Items;
       console.log(this.eventList.length)
     });
   }

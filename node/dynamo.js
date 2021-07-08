@@ -23,18 +23,18 @@ AWS.config.update({
   secretAccessKey: process.env.SECRET_ACCESS_KEY,
 });
 
-/*
+
 var dynamodb = new AWS.DynamoDB();
 
 var params = {
-  TableName : "Content",
+  TableName : "Data",
   KeySchema: [
-    { AttributeName: "id", KeyType: "HASH"},  //Partition key
-    { AttributeName: "name", KeyType: "RANGE" }  //Sort key
+    { AttributeName: "page", KeyType: "HASH"},  //Partition key
+    { AttributeName: "type", KeyType: "RANGE" }  //Sort key
   ],
   AttributeDefinitions: [
-    { AttributeName: "id", AttributeType: "N" },
-    { AttributeName: "name", AttributeType: "S" }
+    { AttributeName: "page", AttributeType: "S" },
+    { AttributeName: "type", AttributeType: "S" }
   ],
   ProvisionedThroughput: {
     ReadCapacityUnits: 10,
@@ -48,9 +48,10 @@ dynamodb.createTable(params, function(err, data) {
   } else {
     console.log("Created table. Table description JSON:", JSON.stringify(data, null, 2));
   }
-});*/
+});
 
 
+/*
 var docClient = new AWS.DynamoDB.DocumentClient();
 
 var table = "Content";
@@ -73,6 +74,7 @@ docClient.put(params, function(err, data) {
     console.log("Added item:", JSON.stringify(data, null, 2));
   }
 });
+*/
 
 
 

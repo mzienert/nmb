@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
+import { AboutService } from '../../services/about.service';
 
 @Component({
   selector: 'app-about-view',
@@ -12,28 +13,26 @@ export class AboutViewComponent implements OnInit {
   baseUrl = environment.baseUrl;
   imgOne: string;
   imgTwo: string;
-  c1: string;
-  c2: string;
+  cOne: string;
+  cTwo: string;
 
-
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private aboutService: AboutService,
+  ) { }
 
   ngOnInit() {
 
-
-   /* this.http.get(`${this.baseUrl}/about-one`).subscribe(res => {
-      this.c1 = res[0].content;
-    });
-    this.http.get(`${this.baseUrl}/about-two`).subscribe(res => {
-      this.c2 = res[0].content;
+    this.aboutService.getBlockOne().subscribe((data: any) => {
+      this.cOne = data.Item.content;
+      this.imgOne = data.Item.img;
     });
 
-    this.http.get(`${this.baseUrl}/image-one`).subscribe(res => {
-      this.imgOne = `https://nmb-compress.s3-us-west-2.amazonaws.com/public/${res[0].name}`;
-    })
-    this.http.get(`${this.baseUrl}/image-two`).subscribe(res => {
-      this.imgTwo = `https://nmb-compress.s3-us-west-2.amazonaws.com/public/${res[0].name}`;
-    })*/
+    this.aboutService.getBlockTwo().subscribe((data: any) => {
+      this.cTwo = data.Item.content;
+      this.imgTwo = data.Item.img;
+    });
+
   }
 
 }

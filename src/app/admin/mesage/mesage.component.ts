@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { AboutService } from '../../services/about.service';
 
 @Component({
   selector: 'app-mesage',
@@ -15,24 +16,34 @@ export class MesageComponent implements OnInit {
   messageForm: FormGroup;
   loading: Boolean;
 
-  constructor(private fb: FormBuilder, private http: HttpClient, public snackbar: MatSnackBar) {
+  constructor(
+    private fb: FormBuilder,
+    private http: HttpClient,
+    public snackbar: MatSnackBar,
+    private aboutService: AboutService,
+  ) {
+
     this.messageForm = fb.group({
       'text': [null]
     });
+
   }
 
   ngOnInit() {
-    this.http.get(`${this.baseUrl}/get-message`).subscribe(res => {
+
+    this.aboutService.getMessage().subscribe((data: any) => {
       this.messageForm.patchValue({
-        text: res[0].message
+        text: data.Item.content
       });
     });
+
   }
 
   saveMsg(): void {
-    const data = this.messageForm.value;
+    const formData = this.messageForm.value;
     this.loading = true;
-    this.http.post(`${this.baseUrl}/update-message`, data).subscribe(res => {
+
+    this.aboutService.updateMessage(formData).subscribe((data: any) => {
       this.loading = false;
       this.snackbar.open('Your message has been saved.', '', {
         duration: 4000

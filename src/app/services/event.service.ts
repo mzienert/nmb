@@ -21,13 +21,13 @@ export class EventService {
   constructor(private http: HttpClient) { }
 
   public saveEvent(data: String) {
-    this.http.post(`${this.baseUrl}/create-event`, data).subscribe(res => {
+    this.http.post(`${this.baseUrl}/events/list-all`, data).subscribe(res => {
       console.log(res);
     });
   }
 
-  public getEvents(): Observable<Events[]> {
-    return this.http.get<Events[]>(`${this.baseUrl}/get-events`);
+  public getEvents(): Observable<any> {
+    return this.http.get<Events[]>(`${this.baseUrl}/events/list-all`);
   }
 
 }
